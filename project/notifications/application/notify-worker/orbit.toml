@@ -1,0 +1,7 @@
+# A standalone project declares itself through an adjacent orbit.toml rather
+# than a uv member table. It must name itself, because there is no [project]
+# table to read the name from -- but like the uv form, it declares no UUIDs.
+[registry]
+name = "notify-worker"
+kind = "worker"
+description = "Delivers queued notifications"

@@ -1,0 +1,10 @@
+[project]
+name = "meridian-telemetry"
+version = "0.9.1"
+description = "Internal tracing helpers"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

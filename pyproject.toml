@@ -1,0 +1,66 @@
+[tool.uv.workspace]
+members = ["package/*/*/*", "project/*/package/*", "project/*/application/*"]
+exclude = ["project/notifications/application/notify-worker"]
+
+[tool.orbit]
+tenant_name = "Meridian"
+
+[tool.orbit.registry]
+schema = 2
+source_key = "meridian/monorepo"
+repository_identity = false
+workspace_slug = "meridian"
+default_tier = "private"
+placement_policy = "follow"
+
+[tool.orbit.registry.resources."library.auth"]
+display_name = "Authentication"
+description = "Token verification shared by every service"
+branches = ["public", "protected", "private"]
+
+[tool.orbit.registry.resources."library.config"]
+display_name = "Configuration"
+description = "Environment and settings loading"
+branches = ["public", "protected", "private"]
+
+[tool.orbit.registry.resources."library.observability"]
+display_name = "Observability"
+description = "Internal tracing helpers"
+branches = ["private"]
+
+[tool.orbit.registry.resources."project.billing"]
+display_name = "Billing"
+description = "The billing toolkit: SDK, engine and API"
+branches = ["public", "protected", "private"]
+
+[tool.orbit.registry.resources."project.notifications"]
+display_name = "Notifications"
+description = "Queued customer notifications"
+branches = ["protected", "private"]
+
+[tool.orbit.registry.members.meridian-auth]
+tier = "public"
+
+[tool.orbit.registry.members.meridian-config]
+tier = "public"
+
+[tool.orbit.registry.members.meridian-telemetry]
+tier = "private"
+
+[tool.orbit.registry.members.meridian-billing-models]
+tier = "protected"
+
+[tool.orbit.registry.members.meridian-billing-ledger]
+tier = "protected"
+
+[tool.orbit.registry.members.meridian-billing-core]
+tier = "protected"
+
+[tool.orbit.registry.members.meridian-billing-sdk]
+tier = "public"
+
+[tool.orbit.registry.members.meridian-billing-cli]
+tier = "protected"
+
+[tool.orbit.registry.members.meridian-notify]
+tier = "protected"

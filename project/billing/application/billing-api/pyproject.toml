@@ -1,0 +1,18 @@
+[project]
+name = "billing-api"
+version = "0.1.0"
+description = "Customer-facing billing API"
+requires-python = ">=3.12"
+dependencies = [
+    "meridian-billing-core",
+]
+
+[tool.uv.sources]
+meridian-billing-core = { workspace = true }
+
+# A uv workspace member declares itself an Application member-locally. `kind`
+# is the only fact the registry cannot derive: the name comes from [project],
+# the home package group from the directory path, and identity is allocated by
+# the server when the proposal is accepted.
+[tool.orbit.registry]
+kind = "service"

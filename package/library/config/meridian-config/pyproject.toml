@@ -1,0 +1,10 @@
+[project]
+name = "meridian-config"
+version = "1.2.0"
+description = "Environment and settings loading"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,15 @@
+[project]
+name = "meridian-billing-cli"
+version = "0.6.0"
+description = "Run billing jobs from the command line"
+requires-python = ">=3.12"
+dependencies = [
+    "meridian-billing-core",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+meridian-billing-core = { workspace = true }
