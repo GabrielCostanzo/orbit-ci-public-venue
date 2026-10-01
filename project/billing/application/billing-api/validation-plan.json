@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "key": "smoke",
+      "name": "API smoke",
+      "intent": "expected",
+      "definition": { "workflow": "billing-api-smoke-v1" }
+    }
+  ]
+}

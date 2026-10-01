@@ -1,0 +1,22 @@
+[project]
+name = "meridian-billing-core"
+version = "2.3.0"
+description = "Process invoice batches into balanced ledger entries"
+requires-python = ">=3.12"
+dependencies = [
+    "meridian-auth",
+    "meridian-billing-ledger",
+    "meridian-billing-sdk",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+meridian-billing = "meridian_billing_core.__main__:main"
+
+[tool.uv.sources]
+meridian-auth = { workspace = true }
+meridian-billing-ledger = { workspace = true }
+meridian-billing-sdk = { workspace = true }

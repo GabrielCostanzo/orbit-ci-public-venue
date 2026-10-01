@@ -1,0 +1,10 @@
+[project]
+name = "meridian-billing-models"
+version = "2.1.0"
+description = "Shared invoice and ledger schemas"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
