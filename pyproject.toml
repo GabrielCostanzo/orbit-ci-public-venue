@@ -28,6 +28,11 @@ display_name = "Observability"
 description = "Internal tracing helpers"
 branches = ["private"]
 
+[tool.orbit.registry.resources."library.search"]
+display_name = "Search"
+description = "Full-text search over invoices and customers"
+branches = ["private"]
+
 [tool.orbit.registry.resources."project.billing"]
 display_name = "Billing"
 description = "The billing toolkit: SDK, engine and API"
@@ -64,3 +69,6 @@ tier = "protected"
 
 [tool.orbit.registry.members.meridian-notify]
 tier = "protected"
+
+[tool.orbit.registry.members.meridian-search]
+tier = "private"

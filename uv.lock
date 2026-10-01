@@ -13,6 +13,7 @@ members = [
     "meridian-billing-sdk",
     "meridian-config",
     "meridian-notify",
+    "meridian-search",
     "meridian-telemetry",
 ]
 
@@ -96,6 +97,17 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [{ name = "meridian-config", editable = "package/library/config/meridian-config" }]
+
+[[package]]
+name = "meridian-search"
+version = "0.1.0"
+source = { editable = "package/library/search/meridian-search" }
+dependencies = [
+    { name = "meridian-auth" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "meridian-auth", editable = "package/library/auth/meridian-auth" }]
 
 [[package]]
 name = "meridian-telemetry"

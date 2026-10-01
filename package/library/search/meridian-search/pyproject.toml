@@ -1,0 +1,15 @@
+[project]
+name = "meridian-search"
+version = "0.1.0"
+description = "Full-text search over invoices and customers"
+requires-python = ">=3.12"
+dependencies = [
+    "meridian-auth",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+meridian-auth = { workspace = true }
