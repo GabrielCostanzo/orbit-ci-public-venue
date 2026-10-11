@@ -1,0 +1,37 @@
+# Disposable sample workspace for the package-ci-connection live venue (cycle pcic-20261011).
+# One package at the repository root: plain `uv build` here writes one sdist and one wheel to dist/.
+[project]
+name = "pcic-venue-sample"
+version = "0.1.0"
+description = "Disposable package for the Orbit package CI connection venue"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pcic_venue_sample"]
+
+# The Orbit workspace source. `repository_identity = false` keeps the GitHub origin out of every
+# candidate, so the registry creates this source with no repository. The self-service package CI
+# connection is what attaches one.
+[tool.orbit.registry]
+schema = 2
+source_key = "pcic/venue"
+repository_identity = false
+workspace_slug = "pcic-venue"
+default_tier = "private"
+placement_policy = "follow"
+
+# The one package group.
+[tool.orbit.registry.resources."library.pcic-venue"]
+display_name = "PCIC venue"
+description = "Disposable package group for the package CI connection venue"
+branches = ["private"]
+
+# The one package, placed in that group by an exact assignment (a root member has no layout to infer from).
+[tool.orbit.registry.members.pcic-venue-sample]
+resource = "library.pcic-venue"
+tier = "private"
