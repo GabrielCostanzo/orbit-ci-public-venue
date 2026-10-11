@@ -1,0 +1,39 @@
+# Save as .github/workflows/packages.yml. Runner prerequisites: Python 3.12, uv and registry CLI.
+# The runner must reach this registry. Accept catalog changes before a main upload.
+name: Package builds
+on:
+  push: {branches: ["walk-1"]}
+jobs:
+  publish:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: self-hosted
+    permissions: {contents: read, id-token: write}
+    env:
+      ORBIT_PACKAGE_CI_AUDIENCE: "orbit:packages:99051c7f-f179-443a-80fa-aa9bac080804"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Build distributions
+        run: uv build
+      - name: Upload and seal verified build
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +x
+          umask 077
+          shopt -s nullglob
+          distributions=(dist/*.whl dist/*.tar.gz)
+          (( ${#distributions[@]} )) || { echo "No distributions found" >&2; exit 1; }
+          token_file=$(mktemp)
+          trap 'rm -f -- "$token_file"' EXIT
+          python3 - <<'PY' > "$token_file"
+          import json, os, urllib.parse, urllib.request
+          audience = urllib.parse.quote(os.environ['ORBIT_PACKAGE_CI_AUDIENCE'], safe='')
+          request = urllib.request.Request(os.environ['ACTIONS_ID_TOKEN_REQUEST_URL'] + '&audience=' + audience,
+              headers={'Authorization': 'Bearer ' + os.environ['ACTIONS_ID_TOKEN_REQUEST_TOKEN']})
+          with urllib.request.urlopen(request, timeout=30) as response:
+              print(json.load(response)['value'])
+          PY
+          registry publish --origin 'http://localhost:18991' --tenant 'e586db2a-4b8f-47c1-a5ef-158b9997685b' --ci-connection '99051c7f-f179-443a-80fa-aa9bac080804' --ci-token-file "$token_file" --seal --json "${distributions[@]}"
