@@ -72,3 +72,6 @@ tier = "protected"
 
 [tool.orbit.registry.members.meridian-search]
 tier = "private"
+
+[tool.orbit.registry.members.meridian-billing-reports]
+tier = "public"
