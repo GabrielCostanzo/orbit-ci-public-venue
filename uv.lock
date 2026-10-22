@@ -10,6 +10,7 @@ members = [
     "meridian-billing-core",
     "meridian-billing-ledger",
     "meridian-billing-models",
+    "meridian-billing-reports",
     "meridian-billing-sdk",
     "meridian-config",
     "meridian-notify",
@@ -75,6 +76,11 @@ requires-dist = [{ name = "meridian-billing-models", editable = "project/billing
 name = "meridian-billing-models"
 version = "2.1.0"
 source = { editable = "project/billing/package/meridian-billing-models" }
+
+[[package]]
+name = "meridian-billing-reports"
+version = "0.1.0"
+source = { editable = "project/billing/package/meridian-billing-reports" }
 
 [[package]]
 name = "meridian-billing-sdk"

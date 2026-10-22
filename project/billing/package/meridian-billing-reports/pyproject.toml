@@ -1,0 +1,13 @@
+[project]
+name = "meridian-billing-reports"
+version = "0.1.0"
+description = "Monthly billing summaries"
+authors = [
+    { name = "Gabriel Costanzo", email = "costanga98@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
