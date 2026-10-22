@@ -64,3 +64,6 @@ tier = "protected"
 
 [tool.buildbarrel.registry.members.meridian-notify]
 tier = "protected"
+
+[tool.buildbarrel.registry.members.meridian-billing-reports]
+tier = "protected"
